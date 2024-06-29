@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Chatbot using Google Generative AI</title>
+</head>
+<body>
+    <h1>Medical Chatbot using Google Generative AI</h1>
+    <div style="margin-bottom: 20px;">
+        <form method="POST">
+            <label for="user_input">You:</label>
+            <input type="text" id="user_input" name="user_input" value="{{ user_input }}">
+            <button type="submit">Send</button>
+            <textarea id="conversation" name="conversation" rows="20" cols="80" readonly>{{ conversation }}</textarea>
+        </form>
+    </div>
+</body>
+</html>
