@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="dashboard.css">
+    <title>MediBotAI Dashboard</title>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h2 id="101" class="abc">MediBotAI</h2>
+            <ul>
+                <li><a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="chatbot.html"><i class="fas fa-robot"></i> Chatbot</a></li>
+
+
+
+                <li><a href="calendar.html"><i class="fas fa-calendar"></i> Calendar</a></li>
+                <li><a href="#"><i class="fas fa-file-alt"></i> Previous Report</a></li>
+                <li><a href="help.html"><i class="fas fa-question-circle"></i> Help Center</a></li>
+                <li><a href="#"><i class="fas fa-sign-out-alt"></i> sign out</a></li>
+            </ul>
+        </div>
+        <div class="main-content">
+            <header>
+                <h1 class="header-title">MediBotAI</h1>
+                <div class="header-content">
+                    <div class="profile">
+                        <img src="image.png" alt="Profile Image">
+                        <span>Parth</span>
+                    </div>
+                </div>
+            </header>
+            <div class="upload-container">
+                <section class="image-upload">
+                    <h3>Upload Eye Disease Image</h3>
+                    <form id="uploadForm1">
+                        <input type="file" id="fileInput1" accept="image/*">
+                        <button type="submit">Upload</button>
+                    </form>
+                </section>
+                <section class="image-upload">
+                    <h3>Upload Skin Image</h3>
+                    <form id="uploadForm2">
+                        <input type="file" id="fileInput2" accept="image/*">
+                        <button type="submit">Upload</button>
+                    </form>
+                </section>
+                <section class="image-upload">
+                    <h3>Upload Pneumonia Image</h3>
+                    <form id="uploadForm3">
+                        <input type="file" id="fileInput3" accept="image/*">
+                        <button type="submit">Upload</button>
+                    </form>
+                </section>
+            </div>
+
+            <div id="results-section">
+                <h3>Results</h3>
+                <div id="results-content">
+                    <!-- Results will be displayed here -->
+                </div>
+            </div>
+            <div class="result-container">
+                <div class="result-header"></div>
+                <div class="result-content">
+                    <!-- Result content goes here -->
+                </div>
+            </div>
+            
+
+            <div id="slideshow">
+                <div class="slide fade">
+                    <img src="image.png" style="width:100%">
+                </div>
+                <div class="slide fade">
+                    <img src="Designer (1).png" style="width:100%">
+                </div>
+                <div class="slide fade">
+                    <img src="image.png" style="width:100%">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="chatbot-icon">
+        <i class="fas fa-comments"></i>
+    </div>
+
+    <script src="dashboard.js"></script>
+    <script>
+        let slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            let slides = document.getElementsByClassName("slide");
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {slideIndex = 1}    
+            slides[slideIndex-1].style.display = "block";  
+            setTimeout(showSlides, 3000); // Change image every 3 seconds
+        }
+    </script>
+</body>
+</html>
