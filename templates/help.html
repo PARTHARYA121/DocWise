@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="help.css">
+    <title>Help Center</title>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <h1> Help Center</h1>
+            <p>All solutions in one place!</p>
+            <div class="search-bar">
+                <input type="text" placeholder="Search your question here...">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <section class="services">
+        <h2>Our Services</h2>
+        <div class="services-container">
+            <div class="service">
+                <i class="fas fa-user-md"></i>
+                <h3>Consultation</h3>
+                <p>We provide the best consultation services by Dr. Shivang Rustagi.</p>
+            </div>
+            <div class="service">
+                <i class="fas fa-flask"></i>
+                <h3>Lab & Diagnostics Help</h3>
+                <p>We have one of the best help desks.</p>
+            </div>
+            <div class="service">
+                <i class="fas fa-heartbeat"></i>
+                <h3>Health & Wellness</h3>
+                <p>Come over to our website and be healthy like our health fitness model Shlok Arora.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question">What services do you offer?</div>
+                <div class="faq-answer">
+                    <p>We offer a wide range of services including consultations, lab and diagnostics help, and health and wellness programs.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">How can I get 24/7 support?</div>
+                <div class="faq-answer">
+                    <p>You can call our support line anytime for 24/7 assistance.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">How can I get a video consultation?</div>
+                <div class="faq-answer">
+                    <p>You can schedule a video consultation through our online portal or by calling our support line.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">How can I make an appointment?</div>
+                <div class="faq-answer">
+                    <p>Appointments can be made through our website or by contacting our support team.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Where can I see my reports?</div>
+                <div class="faq-answer">
+                    <p>Your reports can be accessed through our online portal after logging in with your credentials.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.querySelectorAll('.faq-question').forEach(item => {
+            item.addEventListener('click', event => {
+                const parent = item.parentElement;
+                parent.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>

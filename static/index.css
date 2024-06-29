@@ -1,0 +1,109 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Basic styling */
+body {
+  font-family: Arial, sans-serif;
+  overflow: hidden; /* Prevent scrolling when video is full-screen */
+}
+
+.video-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+#video-bg {
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.wrapper {
+  position: relative;
+  z-index: 1; /* Ensure form is above video */
+  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background for readability */
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 300px;
+  width: 100%;
+}
+
+.wrapper h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #ccc;
+  margin: 15px 0;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-container {
+  position: relative;
+  margin-bottom: 15px;
+}
+
+label#icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #888;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: calc(100% - 30px);
+  padding: 10px;
+  padding-left: 30px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  outline: none;
+}
+
+input[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+.crtacc {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #888;
+}
+
+.crtacc a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.crtacc a:hover {
+  text-decoration: underline;
+}
