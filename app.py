@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template,jsonify
 import os
 from dotenv import load_dotenv
 import google.generativeai as genai
@@ -45,7 +45,7 @@ bot_model = genai.GenerativeModel('gemini-pro')
 
 app = Flask(__name__)
 
-@app.route("/", methods=["GET", "POST"])
+@app.route ("/chatbot", methods=["GET", "POST"])
 def index():
     if "conversation" not in request.form:
         conversation = ""
@@ -61,6 +61,56 @@ def index():
             conversation += f"\nChatbot: {response_text}"
     
     return render_template("index.html", conversation=conversation, user_input=user_input)
+
+@app.route('/') 
+def home():
+    return render_template('index.html')
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        # Handle login form submission
+        username = request.form.get('username')
+        password = request.form.get('password')
+
+        # Validate credentials (you can check against a database or hard-coded values)
+        if username == 'admin' and password == 'admin':
+            # Successful login
+            return 'Welcome, admin!'
+        else:
+            # Invalid credentials
+            return 'Invalid username or password'
+
+    # Display the login form
+    return render_template('login.html')
+
+@app.route('/prediction')
+def image_recognition():
+     if request.method == 'POST':
+         image=request.files['image']
+         if 'image'not in request.files:
+             return jsonify({'error': 'no file'})
+             
+         if image.filename =='':
+             return jsonify({'error': 'a error occured'})
+         image.save('temp.jpg')
+         image_path='temp.jpg'
+          
+
+         disease=request.form['disease']
+         if disease =='lungs':
+             pred1=preprocess_and_predict(image_path,Pneumonia)
+         elif disease == 'skin':
+             pred1=preprocess_and_predict_sk(image_path,Skin,disease)
+         else: 
+             pred1=preprocess_and_predict_sk(image_path,Eye,disease)
+
+     return jsonify({'prediction':pred1})
+
+
+
+
+     
 
 if __name__ == "__main__":
     app.run(port="4000",debug=True)
