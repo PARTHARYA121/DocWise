@@ -1,0 +1,9 @@
+numpy
+opencv-python
+tensorflow
+tensorflow-hub
+regex
+Flask
+python-dotenv
+google-cloud-aiplatform
+requests
