@@ -3,6 +3,31 @@ import os
 from dotenv import load_dotenv
 import google.generativeai as genai
 import re
+import requests
+import os
+
+# Ensure the 'models' directory exists
+os.makedirs('models', exist_ok=True)
+
+# URLs to your models on Hugging Face
+urls = {
+    'Pneumonia': 'https://huggingface.co/ShlokArora2709/DocWise/blob/main/Pneumonia.keras',
+    'EyeDisease': 'https://huggingface.co/ShlokArora2709/DocWise/blob/main/EyeDisease.h5',
+    'Skin': 'https://huggingface.co/ShlokArora2709/DocWise/blob/main/Skin.keras'
+}
+
+def download_model(url, file_name):
+    if not os.path.exists(file_name):
+        print(f'Downloading {file_name}...')
+        response = requests.get(url)
+        response.raise_for_status()
+        with open(file_name, 'wb') as f:
+            f.write(response.content)
+        print(f'{file_name} downloaded successfully.')
+
+for name, url in urls.items():
+    file_name = os.path.join('models', f'{name}.keras' if 'keras' in url else f'{name}.h5')
+    download_model(url, file_name)
 
 # Load environment variables from .env file
 load_dotenv()
