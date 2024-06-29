@@ -2,9 +2,10 @@ from flask import Flask, request, render_template
 import os
 from dotenv import load_dotenv
 import google.generativeai as genai
-import re
 import requests
 import os
+from tensorflow.keras.models import load_model
+from modelfunc import preprocess_and_predict,preprocess_and_predict_sk,clean_response,generate_response
 
 # Ensure the 'models' directory exists
 os.makedirs('models', exist_ok=True)
@@ -29,29 +30,18 @@ for name, url in urls.items():
     file_name = os.path.join('models', f'{name}.keras' if 'keras' in url else f'{name}.h5')
     download_model(url, file_name)
 
-# Load environment variables from .env file
+Pneumonia= load_model("models\Pneumonia.keras")
+Eye=load_model("models\EyeDisease.h5")
+Skin=load_model("models\Skin.keras")
+
 load_dotenv()
 
 # Configure genai with the API key
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 
-model = genai.GenerativeModel('gemini-pro')
+bot_model = genai.GenerativeModel('gemini-pro')
 
-def clean_response(response_text):
-    # Remove Markdown formatting (e.g., **bold**)
-    cleaned_text = re.sub(r'\*\*(.*?)\*\*', r'\1', response_text)
-    return cleaned_text
 
-def generate_response(user_input):
-    # Define the role and context for the chatbot
-    role_instruction = (
-        "You are a medical chatbot. Your purpose is to provide medical advice, "
-        "answer health-related questions, and help users understand their symptoms. "
-        "If the user asks questions that are not related to medical topics, politely decline to answer."
-    )
-    response = model.generate_content(f"{role_instruction}\n\nUser: {user_input}\nChatbot:")
-    cleaned_response = clean_response(response.text.strip())
-    return cleaned_response
 
 app = Flask(__name__)
 
@@ -67,7 +57,7 @@ def index():
         user_input = request.form["user_input"]
         if user_input:
             conversation += f"\nYou: {user_input}"
-            response_text = generate_response(user_input)
+            response_text = generate_response(user_input,bot_model)
             conversation += f"\nChatbot: {response_text}"
     
     return render_template("index.html", conversation=conversation, user_input=user_input)
