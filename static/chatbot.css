@@ -1,62 +1,72 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
-}
-.header {
-    background-color: #6a0dad;
-    color: white;
-    padding: 10px 0;
-    text-align: center;
-    font-size: 24px;
-}
-.container {
-    width: 50%;
-    margin: 20px auto;
-    background-color: white;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-.chat-box {
-    max-height: 400px;
-    overflow-y: auto;
-    margin-bottom: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-.user, .chatbot {
-    margin-bottom: 10px;
-    padding: 10px;
-    border-radius: 4px;
-}
-.user {
-    background-color: #e1f5fe;
-    text-align: right;
-}
-.chatbot {
-    background-color: #e8eaf6;
-    text-align: left;
-}
-.input-group {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
 }
-.input-group input {
-    flex: 1;
+
+h1 {
+    color: #7d0492;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+form {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    border: 2px solid #ddd;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+    box-sizing: border-box;
+}
+
+form label {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333333;
+    margin-bottom: 5px;
+    display: block;
+}
+
+form input[type="text"] {
+    width: calc(100% - 22px);
     padding: 10px;
+    border-radius: 4px;
     border: 1px solid #ccc;
-    border-radius: 4px 0 0 4px;
-    outline: none;
+    font-size: 16px;
+    margin-bottom: 10px;
 }
-.input-group button {
-    padding: 10px;
-    background-color: #6a0dad;
+
+form button {
+    background-color: #7d0492;
+    color: #ffffff;
     border: none;
-    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
     cursor: pointer;
-    border-radius: 0 4px 4px 0;
+    font-size: 16px;
+    font-weight: 600;
 }
-.input-group button:hover {
-    background-color: #5a0cba;
+
+form button:hover {
+    background-color: #5b036d;
+}
+
+form textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    resize: none;
+    margin-top: 10px;
 }

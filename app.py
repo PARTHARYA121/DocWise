@@ -30,9 +30,9 @@ for name, url in urls.items():
     file_name = os.path.join('models', f'{name}.keras' if 'keras' in url else f'{name}.h5')
     download_model(url, file_name)
 
-Pneumonia= load_model("models\Pneumonia.keras")
-Eye=load_model("models\EyeDisease.h5")
-Skin=load_model("models\Skin.keras")
+# Pneumonia= load_model("models\Pneumonia.keras")
+# Eye=load_model("models\EyeDisease.h5")
+# Skin=load_model("models\Skin.keras")
 
 load_dotenv()
 
@@ -64,7 +64,7 @@ def index():
 
 @app.route('/') 
 def home():
-    return render_template('index.html')
+    return render_template('dashboard.html')
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
